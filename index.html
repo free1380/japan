@@ -9,606 +9,417 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --ink: #1a1a18;
-    --paper: #f7f5f0;
-    --mist: #e8e4dc;
-    --stone: #8a8578;
-    --accent: #2d4a3e;
-    --accent-light: #4a7c6a;
-    --white: #ffffff;
+    --ink: #1a1a18; --paper: #f7f5f0; --mist: #e8e4dc; --stone: #8a8578;
+    --accent: #2d4a3e; --accent-light: #4a7c6a; --white: #ffffff;
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  /* COVER */
-  .cover {
-    height: 100vh;
-    min-height: 600px;
-    background: var(--accent);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cover-eyebrow {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    font-size: 0.8rem;
-    letter-spacing: 0.18em;
-    color: rgba(255,255,255,0.55);
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-
-  .cover-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(3rem, 9vw, 7rem);
-    color: var(--white);
-    line-height: 1;
-    letter-spacing: -0.01em;
-    margin-bottom: 1rem;
-  }
-
-  .cover-title em {
-    font-style: italic;
-    color: rgba(255,255,255,0.7);
-  }
-
-  .cover-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 3rem;
-    letter-spacing: 0.02em;
-  }
-
-  .cover-scroll {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    position: absolute;
-    bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .cover-scroll::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 40px;
-    background: rgba(255,255,255,0.2);
-  }
-
-  /* NAV */
-  .nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--mist);
-    display: flex;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .nav-tab {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 1.1rem 2rem;
-    cursor: pointer;
-    color: var(--stone);
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-    background: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-  }
-
+  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 16px; line-height: 1.6; }
+  .cover { height: 100vh; min-height: 600px; background: var(--accent); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+  .cover-eyebrow { font-weight: 300; font-size: 0.8rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.55);
+    text-transform: uppercase; margin-bottom: 1.5rem; }
+  .cover-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(3rem, 9vw, 7rem);
+    color: var(--white); line-height: 1; letter-spacing: -0.01em; margin-bottom: 1rem; }
+  .cover-title em { font-style: italic; color: rgba(255,255,255,0.7); }
+  .cover-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300;
+    font-size: clamp(1rem, 2.5vw, 1.4rem); color: rgba(255,255,255,0.6); margin-bottom: 3rem; letter-spacing: 0.02em; }
+  .cover-scroll { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase;
+    position: absolute; bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .cover-scroll::after { content: ''; display: block; width: 1px; height: 40px; background: rgba(255,255,255,0.2); }
+  .nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--mist);
+    display: flex; justify-content: center; gap: 0; overflow-x: auto; }
+  .nav-tab { font-weight: 400; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 1.1rem 1.5rem; cursor: pointer; color: var(--stone); border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s; background: none; border-top: none; border-left: none; border-right: none;
+    white-space: nowrap; }
   .nav-tab:hover { color: var(--ink); }
   .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-  /* SECTIONS */
   .city-section { display: none; }
   .city-section.active { display: block; }
-
-  /* INTRO BLOCK */
-  .intro {
-    max-width: 680px;
-    margin: 5rem auto 4rem;
-    padding: 0 2rem;
-  }
-
-  .intro-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--stone);
-    margin-bottom: 1.2rem;
-  }
-
-  .intro h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.15;
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .intro p {
-    font-weight: 300;
-    font-size: 1.05rem;
-    color: #3a3a36;
-    line-height: 1.8;
-    max-width: 62ch;
-  }
-
+  .intro { max-width: 680px; margin: 5rem auto 4rem; padding: 0 2rem; }
+  .intro-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone); margin-bottom: 1.2rem; }
+  .intro h2 { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+  .intro p { font-weight: 300; font-size: 1.05rem; color: #3a3a36; line-height: 1.8; max-width: 62ch; }
   .intro p + p { margin-top: 1rem; }
-
-  /* PHOTO GRID */
-  .photo-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem 3rem;
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(12, 1fr);
-  }
-
+  .photo-grid { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 3rem; display: grid; gap: 1rem;
+    grid-template-columns: repeat(12, 1fr); }
   .photo-grid .p { overflow: hidden; background: var(--mist); }
-  .photo-grid .p img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
+  .photo-grid .p img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
   .photo-grid .p:hover img { transform: scale(1.03); }
-
-  /* span classes */
-  .span-8 { grid-column: span 8; height: 520px; }
-  .span-4 { grid-column: span 4; height: 520px; }
-  .span-6 { grid-column: span 6; height: 380px; }
-  .span-4h { grid-column: span 4; height: 380px; }
-  .span-3 { grid-column: span 3; height: 300px; }
-  .span-12 { grid-column: span 12; height: 460px; }
-  .span-5 { grid-column: span 5; height: 400px; }
-  .span-7 { grid-column: span 7; height: 400px; }
-
-  /* STORY BLOCK */
-  .story {
-    max-width: 680px;
-    margin: 2rem auto 5rem;
-    padding: 0 2rem;
-  }
-
-  .story h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-size: 1.6rem;
-    margin-bottom: 0.8rem;
-    letter-spacing: -0.01em;
-  }
-
-  .story p {
-    font-weight: 300;
-    font-size: 1rem;
-    color: #3a3a36;
-    line-height: 1.85;
-    max-width: 62ch;
-  }
-
+  .span-8 { grid-column: span 8; height: 520px; } .span-4 { grid-column: span 4; height: 520px; }
+  .span-6 { grid-column: span 6; height: 380px; } .span-4h { grid-column: span 4; height: 380px; }
+  .span-3 { grid-column: span 3; height: 300px; } .span-12 { grid-column: span 12; height: 460px; }
+  .span-5 { grid-column: span 5; height: 400px; } .span-7 { grid-column: span 7; height: 400px; }
+  .story { max-width: 680px; margin: 2rem auto 5rem; padding: 0 2rem; }
+  .story h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.6rem; margin-bottom: 0.8rem; letter-spacing: -0.01em; }
+  .story p { font-weight: 300; font-size: 1rem; color: #3a3a36; line-height: 1.85; max-width: 62ch; }
   .story p + p { margin-top: 0.9rem; }
-
-  /* DIVIDER */
-  .divider {
-    max-width: 680px;
-    margin: 0 auto 4rem;
-    padding: 0 2rem;
-    border-top: 1px solid var(--mist);
-  }
-
-  /* VIDEO */
-  .video-wrap {
-    max-width: 900px;
-    margin: 0 auto 4rem;
-    padding: 0 1.5rem;
-  }
-
-  .video-wrap video {
-    width: 100%;
-    border-radius: 2px;
-    display: block;
-  }
-
-  .video-caption {
-    font-size: 0.78rem;
-    color: var(--stone);
-    margin-top: 0.6rem;
-    letter-spacing: 0.04em;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 3rem 2rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    font-weight: 300;
-  }
-
+  .video-wrap { max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem; }
+  .video-wrap video { width: 100%; border-radius: 2px; display: block; }
+  .video-caption { font-size: 0.78rem; color: var(--stone); margin-top: 0.6rem; letter-spacing: 0.04em; }
+  footer { background: var(--ink); color: rgba(255,255,255,0.4); text-align: center; padding: 3rem 2rem;
+    font-size: 0.8rem; letter-spacing: 0.06em; font-weight: 300; }
   footer strong { color: rgba(255,255,255,0.7); font-weight: 400; }
-
   @media (max-width: 768px) {
-    .nav-tab { padding: 1rem 1rem; font-size: 0.7rem; }
-    .span-8, .span-4, .span-6, .span-4h, .span-5, .span-7 {
-      grid-column: span 12;
-      height: 280px;
-    }
-    .span-3 { grid-column: span 6; height: 200px; }
-    .span-12 { height: 260px; }
+    .nav-tab { padding: 1rem 1rem; font-size: 0.68rem; }
+    .span-8, .span-4, .span-6, .span-4h, .span-5, .span-7 { grid-column: span 12; height: 280px; }
+    .span-3 { grid-column: span 6; height: 200px; } .span-12 { height: 260px; }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .photo-grid .p img { transition: none; }
-  }
+  @media (prefers-reduced-motion: reduce) { .photo-grid .p img { transition: none; } }
 </style>
 </head>
 <body>
 
-<!-- COVER -->
 <div class="cover">
-  <div class="cover-eyebrow">The Freeman Family &nbsp;·&nbsp; June 2026</div>
+  <div class="cover-eyebrow">The Freeman Family &nbsp;&middot;&nbsp; June 2026</div>
   <h1 class="cover-title">Japan,<br><em>at last</em></h1>
   <p class="cover-sub">Twelve days. Four cities. One family.</p>
   <div class="cover-scroll">scroll</div>
 </div>
 
-<!-- NAV -->
 <nav class="nav" id="main-nav">
   <button class="nav-tab active" onclick="showCity('tokyo')">Tokyo</button>
   <button class="nav-tab" onclick="showCity('hakone')">Hakone</button>
   <button class="nav-tab" onclick="showCity('kyoto')">Kyoto</button>
-  <button class="nav-tab" onclick="showCity('nara')">Nara</button>
+  <button class="nav-tab" onclick="showCity('nara')">Nara &amp; Arashiyama</button>
+  <button class="nav-tab" onclick="showCity('return')">Last Night</button>
 </nav>
-
-<!-- ===================== TOKYO ===================== -->
 <section class="city-section active" id="tokyo">
   <div class="intro">
-    <p class="intro-label">Tokyo &nbsp;·&nbsp; June 12 – 16</p>
-    <h2>A city that never quite lets you catch up</h2>
-    <p>We landed at Narita on a Thursday morning, jet-lagged and wide-eyed, and Tokyo immediately started pulling us in every direction. The Andaz Toranomon Hills became our anchor — a perch above the city's west side that made even waking up at 3am feel intentional.</p>
-    <p>Five days isn't enough. It's barely a down payment. But we got Tsukiji, Shibuya, Daikanyama, teamLab Planets, a rooftop anniversary dinner, and the peculiar joy of a convenience store at midnight that somehow had everything we needed.</p>
+    <p class="intro-label">Tokyo &nbsp;&middot;&nbsp; June 12 &ndash; 16</p>
+    <h2>Four days that moved faster than we could photograph</h2>
+    <p>We landed at Narita and checked into the Andaz Toranomon Hills, and from the first morning the city pulled us in every direction. Hamarikyu Gardens, Asakusa and Senso-ji, a hedgehog cafe, the Imperial Palace grounds and Ueno, an afternoon at teamLab Planets in Toyosu, Akihabara, Ginza &mdash; by day four we had stopped trying to see everything and just followed whatever was interesting.</p>
+    <p>Location data from the trip confirms the shape of it: Saturday was Hamarikyu and Asakusa, Sunday was the Imperial Palace and a long walk toward Shibuya, Monday was teamLab followed by Akihabara and Ginza, and Tuesday we barely left the neighborhood.</p>
   </div>
 
+  <div class="story"><h3>Jun 13 &mdash; Hamarikyu &amp; Asakusa</h3><p>Our first full day. We walked Hamarikyu Gardens in the morning, then took the bus up to Asakusa for Senso-ji and Nakamise-dori &mdash; and somewhere in there, a hedgehog cafe that the kids still bring up.</p></div>
   <div class="photo-grid">
     <div class="p span-8">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7297.jpeg" alt="Tokyo skyline from Andaz rooftop" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0678.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7294.jpeg" alt="Tokyo night view" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8017.jpeg" alt="Tokyo street scene" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8019.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8030.jpeg" alt="Tokyo" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0685.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8042.jpeg" alt="Tokyo" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6598.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8051.jpeg" alt="Tokyo" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6605%20(1).jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8052.jpeg" alt="Tokyo" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6642.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8056.jpeg" alt="Tokyo" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6658%20(1).jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8068.jpeg" alt="Tokyo" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0704.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
-  </div>
-
-  <div class="story">
-    <h3>The rooftop, the anniversary, the city below</h3>
-    <p>One night we had dinner on the Andaz rooftop while Tokyo spread out in every direction — office towers blinking amber, the expressway threading between buildings, the faint outline of Fuji if you knew where to look. It felt like a city that had stopped waiting for permission to be extraordinary.</p>
-    <p>Tsukiji the next morning was the corrective: chaotic, fishy, gloriously unglamorous. We ate tuna on plastic stools at 8am and it was the best thing any of us had tasted in months.</p>
-  </div>
-
-  <div class="photo-grid">
     <div class="p span-12">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8077.jpeg" alt="Tokyo scene" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8089.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8092.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8102.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8107.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8113.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8121.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7290.jpeg" alt="Tokyo" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7276.jpeg" alt="Tokyo" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0711.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
   </div>
-
+  <div class="story"><h3>Jun 14 &mdash; Imperial Palace &amp; west Tokyo</h3><p>A long walking day: the Imperial Palace East Gardens in the morning, Ueno in the late morning, then a slow drift west toward Shibuya as the afternoon wore on.</p></div>
+  <div class="photo-grid">
+    <div class="p span-8">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6667%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6668%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6678.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6686.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6688.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6697.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+  </div>
+  <div class="story"><h3>Jun 15 &mdash; teamLab Planets, Akihabara, Ginza</h3><p>teamLab Planets in Toyosu took up most of the late morning &mdash; the wading-through-light rooms, the mirrored infinity space, the kids soaked to the knees and delighted about it. Akihabara and Ginza filled out the rest of the day.</p></div>
+  <div class="photo-grid">
+    <div class="p span-8">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6712.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6722.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6735.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0800.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6744%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6752%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6763.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-12">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6774.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0822.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+  </div>
+  <div class="story"><h3>Jun 16 &mdash; a slow day</h3><p>After three full days, we let this one be quiet. Mostly the neighborhood around the hotel.</p></div>
+  <div class="photo-grid">
+    <div class="p span-8">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6792.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+  </div>
   <div class="video-wrap">
-    <video controls preload="none" poster="">
-      <source src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_8022.mov" type="video/mp4">
-    </video>
-    <p class="video-caption">Tokyo, in motion</p>
+    <video controls preload="none"><source src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6754.mov" type="video/mp4"></video>
+    <p class="video-caption">Tokyo, early in the trip</p>
   </div>
 </section>
-
-<!-- ===================== HAKONE ===================== -->
 <section class="city-section" id="hakone">
   <div class="intro">
-    <p class="intro-label">Hakone &nbsp;·&nbsp; June 17</p>
-    <h2>Steam, silence, and a mountain that appeared without warning</h2>
-    <p>The ryokan was the whole point of Hakone, and it delivered. We arrived via the Hakone-Yumoto switchback railway — the kids decided it was the most fun train they'd ever been on — and checked in to tatami rooms and a kaiseki dinner that went on for what felt like a happy eternity.</p>
-    <p>The ropeway over Owakudani gave us sulphur clouds and, briefly, Fuji through a gap in the overcast. The aquarium near Lake Ashi was unexpected and worth it. We fell asleep to the sound of the onsen.</p>
-  </div>
-
-  <div class="photo-grid">
-    <div class="p span-7">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7245.jpeg" alt="Hakone" loading="lazy">
-    </div>
-    <div class="p span-5">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7263.jpeg" alt="Hakone kaiseki" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7241.jpeg" alt="Hakone" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7275.jpeg" alt="Hakone" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7223.jpeg" alt="Hakone" loading="lazy">
-    </div>
-    <div class="p span-12">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7225.jpeg" alt="Hakone landscape" loading="lazy">
-    </div>
-    <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7227.jpeg" alt="Hakone ryokan" loading="lazy">
-    </div>
-    <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7218.jpeg" alt="Hakone" loading="lazy">
-    </div>
-  </div>
-
-  <div class="story">
-    <h3>Dinner as ceremony</h3>
-    <p>The kaiseki at the ryokan arrived in eleven courses, each on its own lacquerware. Quinn counted. Shea ate everything, including the things she said she wouldn't. Riley photographed each plate before anyone could touch it. Nobody complained about any of it.</p>
-    <p>The next morning we soaked in the outdoor onsen while the mist sat low on the valley and someone's phone was mercifully elsewhere.</p>
-  </div>
-
-  <div class="video-wrap">
-    <video controls preload="none">
-      <source src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_6754.mov" type="video/mp4">
-    </video>
-    <p class="video-caption">Hakone, from the ropeway</p>
-  </div>
-</section>
-
-<!-- ===================== KYOTO ===================== -->
-<section class="city-section" id="kyoto">
-  <div class="intro">
-    <p class="intro-label">Kyoto &nbsp;·&nbsp; June 18 – 21</p>
-    <h2>The city that requires nothing from you except attention</h2>
-    <p>We stayed in a machiya — a traditional townhouse in the older part of the city — and it reset everything. After the density of Tokyo, Kyoto's particular quietness was almost disorienting. Streets wide enough for one bicycle. Gardens that had been tended for three hundred years. Temple bells at six in the morning.</p>
-    <p>Kinkaku-ji before the crowds. Fushimi Inari twice — once as a family at dawn, and once later just with the kids when the gates went amber in the evening light. Arashiyama on a rickshaw that the kids will talk about for years.</p>
+    <p class="intro-label">Hakone &nbsp;&middot;&nbsp; June 17</p>
+    <h2>A long drive, a lake, and a night in a ryokan</h2>
+    <p>We left Tokyo in the late morning and didn't arrive until early afternoon &mdash; Hakone is close on a map and further in traffic. Once there: Hakone Shrine and the red torii at the edge of Lake Ashi, a slow cruise across the water, and a ryokan for the night with a kaiseki dinner that the kids are still talking about.</p>
   </div>
 
   <div class="photo-grid">
     <div class="p span-8">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7055.jpeg" alt="Kinkaku-ji Golden Pavilion" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0846.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7044.jpeg" alt="Kyoto temple" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7041.jpeg" alt="Kyoto" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7056.jpeg" alt="Kyoto" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7058.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0849.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7059.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6816.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7060.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6818.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7061.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6827.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7062.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6830.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7063.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6832%20(1).jpeg" alt="Japan trip photo" loading="lazy">
     </div>
   </div>
-
   <div class="story">
-    <h3>Fushimi Inari, twice</h3>
-    <p>The first time we went as a family, early, before the tour groups. The torii gates ran up the mountain in an unbroken tunnel of vermilion, and the only sounds were our footsteps and the occasional crow. It was one of those places that exceeds the photograph you've already seen a hundred times.</p>
-    <p>The second visit, just the four of us kids, was different — looser, more exploratory. We made it further up the mountain than the first time. Riley found a shrine off the main path that nobody else seemed to be visiting.</p>
+    <h3>Dinner as ceremony</h3>
+    <p>The kaiseki arrived course by course, each on its own lacquerware. Nobody complained about any of it &mdash; not even the parts none of us could name.</p>
+  </div>
+</section>
+<section class="city-section" id="kyoto">
+  <div class="intro">
+    <p class="intro-label">Kyoto &nbsp;&middot;&nbsp; June 18 &ndash; 20</p>
+    <h2>The city that asks for nothing but your attention</h2>
+    <p>The drive down from Hakone took most of the day; we arrived at the machiya in the mid-afternoon and spent the evening around Nishiki Market and Gion, working off the ride. The next two days had a rhythm to them &mdash; mornings out, long stretches on foot through the same few blocks near Nishiki and Teramachi, an evening trip to Fushimi Inari that turned out to be shorter than any of us expected.</p>
   </div>
 
+  <div class="story"><h3>Jun 18 &mdash; Arrival, Nishiki Market, Gion</h3><p>We checked into the machiya in the afternoon and spent the rest of daylight wandering Nishiki Market and the streets around Gion.</p></div>
   <div class="photo-grid">
+    <div class="p span-8">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0854.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6862.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6873%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6876.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6878.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6893.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6897.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
     <div class="p span-12">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7069.jpeg" alt="Fushimi Inari gates" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6906.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7073.jpeg" alt="Fushimi Inari" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6908.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+  </div>
+  <div class="story"><h3>Jun 19 &mdash; Kyoto center, Fushimi Inari</h3><p>Most of the day was spent around the Teramachi arcade and central Kyoto. In the evening we made it out to Fushimi Inari &mdash; a short visit, the light already going amber on the gates.</p></div>
+  <div class="photo-grid">
+    <div class="p span-8">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6923%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6927.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7075.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6931.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6935.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7076.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6944%20(1).jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7077.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6946.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7078.jpeg" alt="Kyoto" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6948.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
-    <div class="p span-7">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7084.jpeg" alt="Arashiyama bamboo grove" loading="lazy">
+    <div class="p span-12">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6950.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
-    <div class="p span-5">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7092.jpeg" alt="Kyoto" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7103.jpeg" alt="Kyoto" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7116.jpeg" alt="Kyoto" loading="lazy">
-    </div>
-    <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7118.jpeg" alt="Kyoto" loading="lazy">
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6957.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
   </div>
-
-  <div class="video-wrap">
-    <video controls preload="none">
-      <source src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7109.mov" type="video/mp4">
-    </video>
-    <p class="video-caption">Arashiyama, bamboo grove</p>
+  <div class="story"><h3>Jun 20 &mdash; back to the same blocks</h3><p>We barely moved this day &mdash; over an hour spent within 150 meters of the same spot near Nishiki, just browsing. Dinner in the evening, then a long walk back.</p></div>
+  <div class="photo-grid">
+    <div class="p span-8">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6963%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6969.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6983%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6994%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6999.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7005%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7016%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-12">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_0962.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7028%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7034%20(1).jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
   </div>
-
   <div class="video-wrap">
-    <video controls preload="none">
-      <source src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7126.mov" type="video/mp4">
-    </video>
+    <video controls preload="none"><source src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_6785.mov" type="video/mp4"></video>
     <p class="video-caption">Kyoto, evening</p>
   </div>
 </section>
-
-<!-- ===================== NARA ===================== -->
 <section class="city-section" id="nara">
   <div class="intro">
-    <p class="intro-label">Nara &nbsp;·&nbsp; June 21</p>
-    <h2>A deer walked up and took the cracker right out of Quinn's hand</h2>
-    <p>We came to Nara for the afternoon and it was exactly the right amount. The deer are not shy. They are also not particularly dignified, but they are magnificent, and the sight of them wandering between the temple buildings — treating Tōdai-ji like a very large grazing field — is one of those things that stops feeling real after a while.</p>
-    <p>We rode rickshaws here too, through the old streets near Kasuga-taisha. By this point in the trip, the kids had stopped asking what was next and started just looking at what was there.</p>
+    <p class="intro-label">Nara &amp; Arashiyama &nbsp;&middot;&nbsp; June 21</p>
+    <h2>The biggest single day of the whole trip</h2>
+    <p>This was the day we covered the most ground &mdash; a drive out to Nara in the morning (just over an hour there, deer and all), back into Kyoto for Kinkaku-ji, and then out again to Arashiyama for the bamboo grove and the river in the late afternoon. Three very different places, all before dinner.</p>
   </div>
 
   <div class="photo-grid">
     <div class="p span-8">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7179.jpeg" alt="Nara deer" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_1047.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7153.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_8017.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7062.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7073%20(1).jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7161.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_8030.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7166.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7103.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7168.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_8042.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-12">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7170.jpeg" alt="Nara Todaiji temple" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_1075.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7173.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7161.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7196.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7170.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7203.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_8089.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7209.jpeg" alt="Nara rickshaw" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_8107.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
     <div class="p span-4h">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7214.jpeg" alt="Nara" loading="lazy">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7218.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
-    <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7215.jpeg" alt="Nara" loading="lazy">
-    </div>
-    <div class="p span-6">
-      <img src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7226.jpeg" alt="Nara" loading="lazy">
+    <div class="p span-7">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7227.jpeg" alt="Japan trip photo" loading="lazy">
     </div>
   </div>
-
   <div class="story">
-    <h3>Coming back to Tokyo</h3>
-    <p>We returned to Tokyo for the last night — the Park Hyatt in Shinjuku, which made everyone feel slightly sophisticated after ten days of learning how small a tatami room can be. We walked to Asakusa in the evening, our last temple, and ate ramen at a counter restaurant where you ordered by vending machine and nobody spoke.</p>
-    <p>The flight home was quiet. Japan does that — it gives you enough that you spend the whole journey back just turning it over, looking at it from different angles, wondering what you missed.</p>
-  </div>
-
-  <div class="video-wrap">
-    <video controls preload="none">
-      <source src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7193.mov" type="video/mp4">
-    </video>
-    <p class="video-caption">Nara, deer country</p>
+    <h3>Deer, gold, and bamboo</h3>
+    <p>Nara's deer are not shy about it &mdash; they will take a cracker straight out of your hand and act like they're owed one. Kinkaku-ji in the early afternoon light, gold against the pond, was the postcard moment of the whole trip. And Arashiyama at the end of the day &mdash; the bamboo grove, the rickshaw through it &mdash; felt like the right way to close out the biggest day.</p>
   </div>
   <div class="video-wrap">
-    <video controls preload="none">
-      <source src="https://raw.githubusercontent.com/free1380/japan/main/japan%20stage/IMG_7207.mov" type="video/mp4">
-    </video>
-    <p class="video-caption">Nara rickshaw</p>
+    <video controls preload="none"><source src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7109.mov" type="video/mp4"></video>
+    <p class="video-caption">Arashiyama, bamboo grove</p>
   </div>
 </section>
+<section class="city-section" id="return">
+  <div class="intro">
+    <p class="intro-label">Tokyo, once more &nbsp;&middot;&nbsp; June 22 &ndash; 23</p>
+    <h2>The last night, from higher up</h2>
+    <p>Shinkansen back into Tokyo, then the Park Hyatt in Shinjuku for the final night &mdash; the same hotel from Lost in Translation, which felt fitting after twelve days of being pleasantly disoriented in the best possible way. We spent the evening on the rooftop, then Shinjuku the next morning before the flight home: Shinjuku Chuo Park, the Metropolitan Government Building observation deck, and a last walk through Shinjuku Gyoen.</p>
+  </div>
 
-<!-- FOOTER -->
+  <div class="photo-grid">
+    <div class="p span-8">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7263.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7275.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7276.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-6">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7290.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7294.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7295.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+    <div class="p span-4h">
+      <img src="https://cdn.jsdelivr.net/gh/free1380/japan@main/japan%20stage/IMG_7297.jpeg" alt="Japan trip photo" loading="lazy">
+    </div>
+  </div>
+  <div class="story">
+    <h3>Coming back around</h3>
+    <p>Twelve days earlier we'd landed not knowing quite what to expect. The last night, looking out over the city from up high, it was hard to believe how much had happened in between. The flight home was quiet &mdash; the good kind of quiet, everyone turning the trip over in their heads.</p>
+  </div>
+</section>
 <footer>
-  <strong>The Freeman Family &nbsp;·&nbsp; Japan, June 2026</strong><br><br>
+  <strong>The Freeman Family &nbsp;&middot;&nbsp; Japan, June 2026</strong><br><br>
   Jeffrey, Riley, Shea &amp; Quinn
 </footer>
 
